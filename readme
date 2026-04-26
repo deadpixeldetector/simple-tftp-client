@@ -1,0 +1,74 @@
+# ⬡ TFTP Client — Linux Mint
+
+Cliente TFTP con interfaz gráfica, nativo para Linux Mint.
+Sin dependencias externas — solo Python 3 y tkinter.
+
+---
+
+## Instalación rápida
+
+```bash
+chmod +x instalar.sh
+./instalar.sh
+```
+
+O directamente:
+```bash
+python3 tftp_client.py
+```
+
+---
+
+## Requisitos
+
+- Linux Mint (cualquier versión reciente)
+- Python 3.6+
+- python3-tk  (`sudo apt install python3-tk` si falta)
+
+---
+
+## Funcionalidades
+
+| Función | Descripción |
+|---|---|
+| **Enviar archivos** | Sube cualquier archivo al servidor TFTP (WRQ) |
+| **Descargar archivos** | Descarga archivos del servidor TFTP (RRQ) |
+| **Negociación blksize** | RFC 2348 — bloques de 512 a 65464 bytes |
+| **Negociación tsize** | RFC 2349 — tamaño del archivo antes de la descarga |
+| **Timeout configurable** | De 1 a 60 segundos |
+| **Reintentos** | 1 a 20 intentos automáticos |
+| **Modo octet / netascii** | Binario o texto |
+| **Progreso en tiempo real** | Porcentaje, velocidad y ETA |
+| **Cancelación** | Cancelar transferencia en cualquier momento |
+| **Prueba de conexión** | Verifica si el servidor TFTP responde |
+| **Historial** | Registro de todas las transferencias de la sesión |
+| **Log detallado** | Registro con nivel (INFO / OK / WARN / ERROR) |
+
+---
+
+## Protocolos implementados
+
+- **RFC 1350** — TFTP Revisión 2 (protocolo base)
+- **RFC 2347** — Extensión de opciones (OACK)
+- **RFC 2348** — Negociación de blksize
+- **RFC 2349** — Opciones tsize y timeout
+
+---
+
+## Uso
+
+1. **Ingresa la IP** del servidor TFTP y el puerto (por defecto 69)
+2. **Prueba la conexión** con el botón "Probar Conexión"
+3. Para **enviar**: elige el archivo local, ajusta el nombre remoto, pulsa "Enviar"
+4. Para **descargar**: escribe el nombre del archivo en el servidor, elige dónde guardarlo
+5. Ajusta **Opciones** según tu servidor (timeout, reintentos, blksize, modo)
+
+---
+
+## Nota sobre permisos
+
+El puerto estándar TFTP es el **69 (UDP)**. Si el servidor TFTP está
+en tu red local, no necesitas permisos especiales para el cliente.
+
+Si recibes errores de "Violación de acceso" (código 2), el servidor
+puede requerir configuración adicional en sus permisos.
